@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, Linkedin, Github, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -232,11 +233,48 @@ const Contact = () => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full rounded-full"
+                className="w-full rounded-full overflow-hidden"
                 size="lg"
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-                <Send className="ml-2 h-5 w-5" />
+                <AnimatePresence mode="wait">
+                  {isSubmitting ? (
+                    <motion.div
+                      key="submitting"
+                      className="flex items-center justify-center"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                    >
+                      <motion.div
+                        animate={{ 
+                          x: [0, 50], 
+                          y: [0, -30], 
+                          opacity: [1, 0] 
+                        }}
+                        transition={{ 
+                          duration: 1, 
+                          repeat: Infinity,
+                          ease: "easeOut" 
+                        }}
+                        className="mr-2"
+                      >
+                        <Send className="h-5 w-5" />
+                      </motion.div>
+                      <span>Sending...</span>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="idle"
+                      className="flex items-center justify-center"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                    >
+                      Send Message
+                      <Send className="ml-2 h-5 w-5" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </Button>
             </form>
           </div>

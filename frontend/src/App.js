@@ -78,7 +78,7 @@ function App() {
         <div className="App min-h-screen">
           <Navigation />
           <AnimatedRoutes />
-          <Toaster position="top-right" richColors />
+          <Toaster position="top-center" richColors />
         </div>
       </BrowserRouter>
       </ThemeProvider>
