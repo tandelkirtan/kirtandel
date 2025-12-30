@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Kirtan Del - Resume</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
+        h1 { color: #2563eb; text-align: center; margin-bottom: 5px; }
+        .subtitle { text-align: center; color: #666; margin-bottom: 20px; }
+        .section { margin-top: 25px; }
+        .section-title { color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 5px; }
+        .job-title { font-weight: bold; margin-top: 15px; }
+        .date { color: #666; font-style: italic; }
+        ul { margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <h1>KIRTAN DEL</h1>
+    <div class="subtitle">Full Stack Developer<br>
+    Email: kirtan.del@example.com | Phone: +1 (555) 123-4567</div>
+    
+    <div class="section">
+        <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
+        <p>Passionate full-stack developer with 5+ years of experience creating innovative web applications. Proven track record in building scalable solutions that drive business growth.</p>
+    </div>
+    
+    <div class="section">
+        <h2 class="section-title">TECHNICAL SKILLS</h2>
+        <ul>
+            <li><strong>Frontend:</strong> React, Vue.js, TypeScript, Tailwind CSS</li>
+            <li><strong>Backend:</strong> Node.js, Python, FastAPI, Express.js</li>
+            <li><strong>Database:</strong> MongoDB, PostgreSQL, Redis</li>
+            <li><strong>DevOps:</strong> AWS, Docker, Kubernetes, CI/CD</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2 class="section-title">WORK EXPERIENCE</h2>
+        <div class="job-title">Senior Full Stack Developer - Tech Innovations Inc.</div>
+        <div class="date">2022 - Present | San Francisco, CA</div>
+        <ul>
+            <li>Architected microservices handling 1M+ daily requests</li>
+            <li>Reduced application load time by 60%</li>
+            <li>Mentored 5 junior developers</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2 class="section-title">EDUCATION</h2>
+        <div class="job-title">Master of Science in Computer Science</div>
+        <div class="date">Stanford University | 2017-2019 | GPA: 3.9/4.0</div>
+    </div>
+    
+    <p style="text-align: center; margin-top: 40px; color: #999; font-size: 12px;">
+        This is a dummy resume for portfolio demonstration
+    </p>
+</body>
+</html>

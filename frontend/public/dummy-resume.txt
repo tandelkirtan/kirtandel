@@ -1,0 +1,53 @@
+KIRTAN DEL
+Full Stack Developer
+Email: kirtan.del@example.com | Phone: +1 (555) 123-4567
+GitHub: github.com/kirtandel | LinkedIn: linkedin.com/in/kirtandel
+
+PROFESSIONAL SUMMARY
+Passionate full-stack developer with 5+ years of experience creating innovative web applications.
+Proven track record in building scalable solutions that drive business growth.
+
+TECHNICAL SKILLS
+Frontend: React, Vue.js, TypeScript, Tailwind CSS, HTML/CSS
+Backend: Node.js, Python, FastAPI, Express.js, GraphQL
+Database: MongoDB, PostgreSQL, MySQL, Redis, Firebase
+DevOps: AWS, Docker, Kubernetes, CI/CD Pipelines
+Tools: Git, VS Code, Figma, Jira, Testing (Jest/Cypress)
+
+WORK EXPERIENCE
+
+Senior Full Stack Developer - Tech Innovations Inc.
+2022 - Present | San Francisco, CA
+• Architected and deployed microservices handling 1M+ daily requests
+• Reduced application load time by 60% through optimization
+• Mentored 5 junior developers and conducted code reviews
+• Implemented CI/CD pipeline reducing deployment time by 80%
+
+Full Stack Developer - Digital Solutions Ltd.
+2020 - 2022 | New York, NY
+• Built 15+ responsive web applications from scratch
+• Improved application performance by 45% through refactoring
+• Integrated payment gateways processing $2M+ monthly
+• Collaborated with UI/UX team to implement pixel-perfect designs
+
+EDUCATION
+
+Master of Science in Computer Science
+Stanford University | 2017 - 2019 | GPA: 3.9/4.0
+Specialization: Artificial Intelligence and Machine Learning
+
+Bachelor of Technology in Information Technology
+Massachusetts Institute of Technology | 2013 - 2017 | GPA: 3.8/4.0
+
+CERTIFICATIONS
+• AWS Certified Solutions Architect (2023)
+• Google Cloud Professional Developer (2022)
+• MongoDB Certified Developer (2022)
+• React Advanced Certification - Meta (2021)
+
+PROJECTS
+E-Commerce Platform - Built full-featured shopping platform with 10K+ users
+AI Content Generator - ML-powered platform generating 1000+ posts/day
+Task Management App - Real-time collaboration tool used by 50+ teams
+
+This is a dummy resume for portfolio demonstration purposes.
