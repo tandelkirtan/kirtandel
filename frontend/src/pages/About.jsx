@@ -65,14 +65,14 @@ const About = () => {
       icon: <Award className="h-6 w-6" />
     },
     {
-      name: 'Google Cloud Professional Developer',
-      issuer: 'Google Cloud',
+      name: 'Web - Development',
+      issuer: 'Masai Institute of India',
       date: '2022',
       icon: <Award className="h-6 w-6" />
     },
     {
-      name: 'Web - Development',
-      issuer: 'Masai Institute of India',
+      name: 'Web - Devlopment',
+      issuer: 'Forage - JPMorgan Chase virtual experience program',
       date: '2022',
       icon: <Award className="h-6 w-6" />
     },
@@ -86,7 +86,7 @@ const About = () => {
 
   const skillCategories = [
     {
-      icon: <Code className="h-8 w-8" />,
+      icon: <Code className="h-6 w-6 md:h-8 md:w-8" />,
       title: 'Frontend Development',
       skills: [
         { name: 'React.js', level: 95 },
@@ -99,7 +99,7 @@ const About = () => {
       ]
     },
     {
-      icon: <Database className="h-8 w-8" />,
+      icon: <Database className="h-6 w-6 md:h-8 md:w-8" />,
       title: 'Backend Development',
       skills: [
         { name: 'Node.js', level: 92 },
@@ -111,7 +111,7 @@ const About = () => {
       ]
     },
     {
-      icon: <Database className="h-8 w-8" />,
+      icon: <Database className="h-6 w-6 md:h-8 md:w-8" />,
       title: 'Other Skills',
       skills: [
         { name: 'Figma', level: 90 },
@@ -339,7 +339,7 @@ const About = () => {
             {/* Certifications */}
             <div>
               <h2 className="text-3xl font-bold mb-8">Certifications</h2>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {certifications.map((cert, index) => (
                   <div
                     key={index}
@@ -374,22 +374,22 @@ const About = () => {
                     <div className="text-primary mr-3">{category.icon}</div>
                     <h3 className="text-xl font-bold">{category.title}</h3>
                   </div>
-                  <div className="flex flex-wrap gap-8 justify-center sm:justify-start">
+                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-6 justify-items-center sm:justify-items-start">
                     {category.skills.map((skill, i) => {
                       const logo = skillLogoMap[skill.name];
                       return (
-                        <div key={i} className="flex flex-col items-center group cursor-pointer min-w-[80px]">
+                        <div key={i} className="flex flex-col items-center group cursor-pointer">
                           {logo ? (
                             <img
                               src={logo}
                               alt={skill.name}
                               title={skill.name}
-                              className="h-16 w-16 object-contain rounded-xl bg-white/90 p-3 shadow-md transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg"
+                              className="h-12 w-12 md:h-16 md:w-16 object-contain rounded-xl bg-white/90 p-3 shadow-md transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg"
                             />
                           ) : (
                             <span
                               title={skill.name}
-                              className="h-16 w-16 rounded-xl bg-primary/10 text-primary flex items-center justify-center text-2xl font-bold shadow-md transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg"
+                              className="h-12 w-12 md:h-16 md:w-16 rounded-xl bg-primary/10 text-primary flex items-center justify-center text-xl md:text-2xl font-bold shadow-md transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg"
                             >
                               {skill.name.charAt(0)}
                             </span>
