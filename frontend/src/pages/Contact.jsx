@@ -4,10 +4,14 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
-import axios from 'axios';
+import emailjs from '@emailjs/browser';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+// EmailJS Configuration
+// Keys are loaded from environment variables (see .env file)
+const EMAILJS_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID || "service_cd25jyg";
+const EMAILJS_TEMPLATE_ID_ADMIN = process.env.REACT_APP_EMAILJS_TEMPLATE_ID_ADMIN || "template_b5q0rvm"; // Template 1: Sends message to you
+const EMAILJS_TEMPLATE_ID_USER = process.env.REACT_APP_EMAILJS_TEMPLATE_ID_USER || "template_0k6mt48";   // Template 2: Auto-reply to user
+const EMAILJS_PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "T5pldEnnPvwUm1eOF";
 
 const Contact = () => {
   const WhatsAppIcon = ({ className }) => (
@@ -37,12 +41,77 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Check if keys are configured
+    if (
+      EMAILJS_SERVICE_ID === "YOUR_SERVICE_ID" ||
+      EMAILJS_TEMPLATE_ID_ADMIN === "YOUR_TEMPLATE_ID_ADMIN" ||
+      EMAILJS_TEMPLATE_ID_USER === "YOUR_TEMPLATE_ID_USER" ||
+      EMAILJS_PUBLIC_KEY === "YOUR_PUBLIC_KEY"
+    ) {
+      // SIMULATION MODE: Allow testing UI without keys
+      await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
+      
+      toast.info("Demo Mode: Email not actually sent.", {
+        description: "Configure EmailJS keys in .env file to enable real emails."
+      });
+      
+      toast.success('Message sent successfully! (Simulated)');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      setIsSubmitting(false);
+      return;
+    }
+
+    const templateParams = {
+      to_name: "Kirtan Tandel", // Your name
+      from_name: formData.name,
+      from_email: formData.email,
+      email: formData.email, // Alias for easier template configuration
+      to_email: formData.email, // Alias for easier template configuration
+      subject: formData.subject,
+      message: formData.message,
+      reply_to: formData.email,
+    };
+
     try {
-      await axios.post(`${API}/contact`, formData);
-      toast.success('Message sent successfully! I\'ll get back to you soon.');
+      console.log("Sending with params:", {
+        serviceId: EMAILJS_SERVICE_ID,
+        templateAdmin: EMAILJS_TEMPLATE_ID_ADMIN,
+        templateUser: EMAILJS_TEMPLATE_ID_USER,
+        publicKey: EMAILJS_PUBLIC_KEY ? "Present" : "Missing"
+      });
+
+      // 1. Send email to Admin (You)
+      console.log("Sending Admin Email...");
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID_ADMIN,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      ).then(() => {
+        console.log("Admin Email Sent Successfully");
+      }).catch(err => {
+        console.error("Admin email failed:", err);
+        throw new Error(`Admin Email Failed: ${err.text || err.message}`);
+      });
+
+      // 2. Send Auto-reply to User
+      console.log("Sending User Auto-reply...");
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID_USER,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      ).then(() => {
+        console.log("User Email Sent Successfully");
+      }).catch(err => {
+        console.error("User email failed:", err);
+        throw new Error(`User Email Failed: ${err.text || err.message}`);
+      });
+
+      toast.success('Message sent successfully! A confirmation email has been sent to you.');
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
-      toast.error('Failed to send message. Please try again.');
+      toast.error(`Failed to send: ${error.message}`);
       console.error('Error sending message:', error);
     } finally {
       setIsSubmitting(false);
