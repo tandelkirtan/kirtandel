@@ -2,6 +2,7 @@ import { User, Heart, Target, Zap, Briefcase, Calendar, GraduationCap, Award, Bo
  
 import { Button } from '@/components/ui/button';
 import profileimage from '../images/kt.png'
+import resumePDF from '@/doccuments/Kirtan_Tandel_Resume.pdf'
 
 
 const About = () => {
@@ -150,7 +151,13 @@ const About = () => {
     'Docker': 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/docker.svg',
     'Kubernetes': 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/kubernetes.svg',
     'CI/CD': 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/githubactions.svg',
-    'Google Cloud': 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/googlecloud.svg'
+    'Google Cloud': 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/googlecloud.svg',
+    'Figma': 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/figma.svg',
+    'Canva': 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/canva.svg',
+    'Photoshop': 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/adobephotoshop.svg',
+    'Primerpro': 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/adobepremierepro.svg',
+    'After Effect': 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/adobeaftereffects.svg',
+    'Devinci': 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/davinciresolve.svg'
   };
 
   const softSkills = [
@@ -215,20 +222,20 @@ const About = () => {
 
           {/* Right - Content */}
           <div className="space-y-6">
-            <div className="glass-effect rounded-2xl p-8">
-              <h2 className="text-3xl font-bold mb-4">Hello! I'm Kirtan Tandel</h2>
-              <div className="space-y-4 text-muted-foreground">
-                <p>
-                  I’m a passionate Full-Stack Developer with hands-on experience in building responsive, scalable, and user-focused web applications. My journey in technology began with curiosity about how digital products work and gradually evolved into designing complete end-to-end solutions.
-                </p>
-                <p>
-                  I enjoy working across both frontend and backend, focusing on clean architecture, performance, and seamless user experiences. I’ve contributed to real-world projects where I collaborated with teams, solved practical problems, and delivered reliable features from concept to deployment.
-                </p>
-                <p>
-                  I strongly believe in continuous learning and adapting to new technologies to improve my craft. When I’m not coding, I explore emerging tech trends, work on personal and open-source projects, and focus on building solutions that are intuitive, impactful, and valuable to users.
-                </p>
+              <div className="glass-effect rounded-2xl p-8">
+                <h2 className="text-3xl font-bold mb-4">Hello! I'm Kirtan Tandel</h2>
+                <div className="space-y-4 text-muted-foreground text-sm md:text-base">
+                  <p>
+                    I’m a passionate Full-Stack Developer with hands-on experience in building responsive, scalable, and user-focused web applications. My journey in technology began with curiosity about how digital products work and gradually evolved into designing complete end-to-end solutions.
+                  </p>
+                  <p>
+                    I enjoy working across both frontend and backend, focusing on clean architecture, performance, and seamless user experiences. I’ve contributed to real-world projects where I collaborated with teams, solved practical problems, and delivered reliable features from concept to deployment.
+                  </p>
+                  <p>
+                    I strongly believe in continuous learning and adapting to new technologies to improve my craft. When I’m not coding, I explore emerging tech trends, work on personal and open-source projects, and focus on building solutions that are intuitive, impactful, and valuable to users.
+                  </p>
+                </div>
               </div>
-            </div>
           </div>
         </div>
 
@@ -237,7 +244,7 @@ const About = () => {
           <h2 className="text-3xl font-bold text-center mb-12">
             Core <span className="gradient-text">Values</span>
           </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => (
               <div
                 key={index}
@@ -361,7 +368,7 @@ const About = () => {
               {skillCategories.map((category, index) => (
                 <div
                   key={index}
-                  className="glass-effect rounded-2xl p-6 card-hover"
+                  className={`glass-effect rounded-2xl p-6 card-hover ${category.title === 'Other Skills' ? 'lg:col-span-2' : ''}`}
                 >
                   <div className="flex items-center mb-6">
                     <div className="text-primary mr-3">{category.icon}</div>
@@ -450,7 +457,7 @@ const About = () => {
           <p className="text-muted-foreground mb-6">
             Download my resume to get a comprehensive overview of my experience, skills, and achievements.
           </p>
-          <a href="/dummy-resume.pdf" download="Kirtan_Tandel_Resume.pdf">
+          <a href={resumePDF} download="Kirtan_Tandel_Resume.pdf">
             <Button size="lg" className="rounded-full">
               <FileText className="mr-2 h-5 w-5" />
               Download Resume
