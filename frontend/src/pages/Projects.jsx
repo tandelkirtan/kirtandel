@@ -32,7 +32,7 @@ const Projects = () => {
       image: expense,
       technologies: ['Python', 'FastAPI', 'React', 'OpenAI', 'PostgreSQL'],
       github: 'https://github.com/tandelkirtan',
-      demo: 'https://xexpensetracker-gamma-seven.vercel.app/',
+      demo: 'https://expense-track-opal.vercel.app/',
       highlights: ['Generates 1000+ posts/day', 'GPT-4 powered', '95% user satisfaction']
     },
     {
