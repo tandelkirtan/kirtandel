@@ -1,20 +1,14 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Github, Linkedin, Mail, FileText } from 'lucide-react';
-import profileimage from '../images/portfol.jpg'
+import { motion } from 'framer-motion';
 
 const Home = () => {
-  const [mounted, setMounted] = useState(false);
   const [displayText, setDisplayText] = useState('');
   const [roleIndex, setRoleIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [typingSpeed, setTypingSpeed] = useState(150);
 
-  const roles = ['Full Stack Developer', 'UI/UX Enthusiast', 'Problem Solver', 'Tech Explorer'];
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const roles = ['Full Stack Developer', 'UI/UX Enthusiast...', 'Problem Solver...', 'Editor...'];
 
   // Handle typing effect
   useEffect(() => {
@@ -43,85 +37,89 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, [displayText, isDeleting, roleIndex, typingSpeed, roles]);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        stiffness: 100,
+      },
+    },
+  };
+
   return (
-    <div className="h-screen md:min-h-screen overflow-hidden md:overflow-visible hero-gradient animated-background flex items-center relative z-10">
-      <div className="max-w-7xl mx-auto px-4 mt-12 lg:mt-0 sm:px-6 w-full relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className={`space-y-6 ${mounted ? 'animate-in' : 'opacity-0'}`}>
-            <div className="space-y-2">
-              <p className="text-primary font-medium text-lg">Hi there! I'm</p>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground">
-                Kirtan Tandel
-              </h1>
-              <div className="h-16 flex items-center">
-                <p className="text-2xl sm:text-3xl gradient-text font-semibold">
-                  {displayText}
-                  <span className="typing-cursor">|</span>
-                </p>
-              </div>
-            </div>
-
-            <p className="hidden sm:block text-lg text-muted-foreground max-w-xl">
-              Passionate about creating beautiful, functional, and user-centric digital experiences.
-              I transform ideas into elegant solutions through code.
-            </p>
-
-            {/* Social Links */}
-            <div className="hidden lg:flex gap-4 pt-4">
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-full bg-accent hover:bg-accent/80 transition-colors"
-                aria-label="GitHub"
-              >
-                <Github className="h-5 w-5" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-full bg-accent hover:bg-accent/80 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a
-                href="mailto:contact@example.com"
-                className="p-3 rounded-full bg-accent hover:bg-accent/80 transition-colors"
-                aria-label="Email"
-              >
-                <Mail className="h-5 w-5" />
-              </a>
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-full bg-accent hover:bg-accent/80 transition-colors"
-                aria-label="Resume"
-              >
-                <FileText className="h-5 w-5" />
-              </a>
-            </div>
-          </div>
-
-          {/* Right Content - Profile Image */}
-          <div className="relative">
-            <div className="floating">
-              <div className="relative w-full max-w-md mx-auto avatar-wrap">
-                <div className="avatar-frame shadow-2xl">
-                  <img
-                    src={profileimage}
-                    alt="Kirtan Tandel - Profile"
-                    className="avatar-img object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div className="h-screen min-h-screen overflow-hidden hero-gradient animated-background flex items-center justify-center relative z-10">
+      {/* Background decoration */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            rotate: [0, 90, 0],
+            opacity: [0.1, 0.3, 0.1],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute -top-1/2 -left-1/2 w-[1000px] h-[1000px] bg-primary/10 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.5, 1],
+            rotate: [0, -90, 0],
+            opacity: [0.1, 0.2, 0.1],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+          className="absolute -bottom-1/2 -right-1/2 w-[800px] h-[800px] bg-blue-500/10 rounded-full blur-3xl"
+        />
       </div>
+
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="max-w-4xl mx-auto px-4 text-center relative z-10"
+      >
+        <motion.div variants={itemVariants} className="space-y-4 mb-8">
+          <p className="text-primary font-medium text-xl md:text-2xl tracking-wider">Hi there! I'm</p>
+          <h1 className="text-6xl sm:text-7xl lg:text-9xl font-bold text-foreground tracking-tight">
+            Kirtan Tandel
+          </h1>
+        </motion.div>
+
+        <motion.div variants={itemVariants} className="h-20 md:h-24 flex items-center justify-center mb-8">
+          <p className="text-3xl sm:text-4xl lg:text-6xl gradient-text font-bold">
+            {displayText}
+            <span className="typing-cursor ml-2">|</span>
+          </p>
+        </motion.div>
+
+        <motion.div variants={itemVariants}>
+          <p className="text-lg md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-12">
+            Passionate about creating beautiful, functional, and user-centric digital experiences.
+            I transform ideas into elegant solutions through code.
+          </p>
+        </motion.div>
+
+      </motion.div>
     </div>
   );
 };

@@ -1,55 +1,37 @@
-import { Camera, Music, Book, Plane, Code, Dumbbell, Palette, Coffee } from 'lucide-react';
+import { Camera, Plane, Video, Cpu, Trophy } from 'lucide-react';
 
 const Hobbies = () => {
   const hobbies = [
     {
-      icon: <Code className="h-8 w-8" />,
-      title: 'Open Source',
-      description: 'Contributing to open-source projects and building tools for the developer community.',
-      color: 'from-blue-500 to-cyan-500'
-    },
-    {
       icon: <Camera className="h-8 w-8" />,
-      title: 'Photography',
-      description: 'Capturing moments and landscapes, with a focus on urban and nature photography.',
+      title: 'Photography and Videography',
+      description: 'Capturing moments through the lens, from urban landscapes to cinematic storytelling.',
       color: 'from-purple-500 to-pink-500'
     },
     {
-      icon: <Music className="h-8 w-8" />,
-      title: 'Music',
-      description: 'Playing guitar and producing electronic music in my home studio.',
-      color: 'from-green-500 to-teal-500'
-    },
-    {
-      icon: <Book className="h-8 w-8" />,
-      title: 'Reading',
-      description: 'Exploring sci-fi novels, tech books, and personal development literature.',
-      color: 'from-orange-500 to-red-500'
+      icon: <Video className="h-8 w-8" />,
+      title: 'Editing (Video and Photo)',
+      description: 'Bringing visual stories to life through post-production and creative editing.',
+      color: 'from-blue-500 to-cyan-500'
     },
     {
       icon: <Plane className="h-8 w-8" />,
       title: 'Travel',
-      description: 'Exploring new cultures and destinations, visited 25 countries so far.',
+      description: 'Exploring new cultures, cuisines, and destinations around the world.',
       color: 'from-indigo-500 to-purple-500'
     },
     {
-      icon: <Dumbbell className="h-8 w-8" />,
-      title: 'Fitness',
-      description: 'Regular gym workouts and running to maintain physical and mental health.',
-      color: 'from-red-500 to-orange-500'
-    },
-    {
-      icon: <Palette className="h-8 w-8" />,
-      title: 'Design',
-      description: 'Creating digital art and experimenting with UI/UX design principles.',
-      color: 'from-pink-500 to-rose-500'
-    },
-    {
-      icon: <Coffee className="h-8 w-8" />,
-      title: 'Coffee Culture',
-      description: 'Brewing and tasting different coffee beans, exploring local coffee shops.',
+      icon: <Trophy className="h-8 w-8" />,
+      title: 'Sports',
+      description: 'Staying active and competitive through various team and individual sports.',
       color: 'from-amber-500 to-yellow-500'
-    }
+    },
+    {
+      icon: <Cpu className="h-8 w-8" />,
+      title: 'AI',
+      description: 'Exploring the latest in Artificial Intelligence, Machine Learning, and automation.',
+      color: 'from-green-500 to-emerald-500'
+    },
   ];
 
   const interests = [
@@ -77,7 +59,7 @@ const Hobbies = () => {
         </div>
 
         {/* Main Hobbies */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-20">
           {hobbies.map((hobby, index) => (
             <div
               key={index}

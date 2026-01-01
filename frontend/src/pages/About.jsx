@@ -215,7 +215,7 @@ const About = () => {
                   alt="Kirtan Tandel Profile"
                   className="w-full h-[500px] object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div className=""></div>
               </div>
             </div>
           </div>
@@ -374,7 +374,7 @@ const About = () => {
                     <div className="text-primary mr-3">{category.icon}</div>
                     <h3 className="text-xl font-bold">{category.title}</h3>
                   </div>
-                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-6 justify-items-center sm:justify-items-start">
+                  <div className={`grid gap-6 justify-items-center sm:justify-items-start ${category.title === 'Other Skills' ? 'grid-cols-3 sm:grid-cols-6' : 'grid-cols-3 sm:grid-cols-4 md:grid-cols-5'}`}>
                     {category.skills.map((skill, i) => {
                       const logo = skillLogoMap[skill.name];
                       return (
