@@ -1,12 +1,21 @@
-import { ExternalLink, Github } from 'lucide-react';
+import { useState } from 'react';
+import { ExternalLink, Github, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import qkart from '@/images/qkart.png';
 import medify from '@/images/medify.png';
 import expense from '@/images/expense.png';
 import chatbot from '@/images/chatbotai.png';
 
-
 const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+  
   const projects = [
     {
       title: 'Q-KART - E-Commerce Platform',
@@ -78,11 +87,16 @@ const Projects = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="glass-effect rounded-2xl overflow-hidden card-hover group"
+              className="glass-effect rounded-2xl overflow-hidden card-hover group cursor-pointer md:cursor-default"
+              onClick={() => {
+                if (window.innerWidth < 768) {
+                  setSelectedProject(project);
+                }
+              }}
             >
               {/* Project Image */}
               <div className="relative h-48 overflow-hidden">
@@ -97,48 +111,124 @@ const Projects = () => {
               {/* Project Content */}
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
+                
+                <div className="hidden md:block">
+                  <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
 
-                {/* Highlights */}
-                <div className="mb-4 space-y-1">
-                  {project.highlights.map((highlight, i) => (
-                    <div key={i} className="flex items-center text-xs text-muted-foreground">
-                      <span className="text-primary mr-2">→</span>
-                      {highlight}
-                    </div>
-                  ))}
-                </div>
+                  {/* Highlights */}
+                  <div className="mb-4 space-y-1">
+                    {project.highlights.map((highlight, i) => (
+                      <div key={i} className="flex items-center text-xs text-muted-foreground">
+                        <span className="text-primary mr-2">→</span>
+                        {highlight}
+                      </div>
+                    ))}
+                  </div>
 
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+                  {/* Technologies */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.technologies.map((tech, i) => (
+                      <span
+                        key={i}
+                        className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
 
-                {/* Links */}
-                <div className="flex gap-3">
-                  <a href={project.github} target="_blank" rel="noopener noreferrer">
-                    <Button variant="outline" size="sm" className="rounded-full">
-                      <Github className="h-4 w-4 mr-2" />
-                      Code
-                    </Button>
-                  </a>
-                  <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                    <Button size="sm" className="rounded-full">
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      Live Demo
-                    </Button>
-                  </a>
+                  {/* Links */}
+                  <div className="flex gap-3">
+                    <a href={project.github} target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline" size="sm" className="rounded-full">
+                        <Github className="h-4 w-4 mr-2" />
+                        Code
+                      </Button>
+                    </a>
+                    <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                      <Button size="sm" className="rounded-full">
+                        <ExternalLink className="h-4 w-4 mr-2" />
+                        Live Demo
+                      </Button>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           ))}
+        </div>
+
+        <Dialog open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
+          <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto">
+            {selectedProject && (
+              <>
+                <DialogHeader>
+                  <DialogTitle className="text-xl font-bold">{selectedProject.title}</DialogTitle>
+                </DialogHeader>
+                
+                <div className="mt-4">
+                  <div className="relative h-48 overflow-hidden rounded-lg mb-4">
+                    <img
+                      src={selectedProject.image}
+                      alt={selectedProject.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  
+                  <p className="text-sm text-muted-foreground mb-4">{selectedProject.description}</p>
+
+                  <div className="mb-4 space-y-1">
+                    {selectedProject.highlights.map((highlight, i) => (
+                      <div key={i} className="flex items-center text-xs text-muted-foreground">
+                        <span className="text-primary mr-2">→</span>
+                        {highlight}
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {selectedProject.technologies.map((tech, i) => (
+                      <span
+                        key={i}
+                        className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex gap-3">
+                    <a href={selectedProject.github} target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline" size="sm" className="rounded-full">
+                        <Github className="h-4 w-4 mr-2" />
+                        Code
+                      </Button>
+                    </a>
+                    <a href={selectedProject.demo} target="_blank" rel="noopener noreferrer">
+                      <Button size="sm" className="rounded-full">
+                        <ExternalLink className="h-4 w-4 mr-2" />
+                        Live Demo
+                      </Button>
+                    </a>
+                  </div>
+                </div>
+              </>
+            )}
+          </DialogContent>
+        </Dialog>
+
+        {/* Intern & Fun Projects Button */}
+        <div className="mt-16 flex justify-center">
+          <Link to="/fun-projects">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="rounded-full text-base sm:text-lg px-6 sm:px-8 py-6 sm:py-7 glass-effect hover:scale-105 transition-transform duration-300"
+            >
+              <Sparkles className="h-5 w-5 sm:h-6 sm:w-6 mr-2 sm:mr-3" />
+              Intern & Fun Projects
+            </Button>
+          </Link>
         </div>
 
         {/* CTA Section */}

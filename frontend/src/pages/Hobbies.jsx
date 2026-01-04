@@ -65,11 +65,13 @@ const Hobbies = () => {
               key={index}
               className="glass-effect rounded-2xl p-6 card-hover group"
             >
-              <div className={`inline-block p-3 rounded-xl bg-gradient-to-r ${hobby.color} text-white mb-4 group-hover:scale-110 transition-transform`}>
-                {hobby.icon}
+              <div className="flex items-center lg:block">
+                <div className={`inline-block p-3 rounded-xl bg-gradient-to-r ${hobby.color} text-white mr-4 lg:mr-0 lg:mb-4 group-hover:scale-110 transition-transform`}>
+                  {hobby.icon}
+                </div>
+                <h3 className="text-xl font-bold lg:mb-2">{hobby.title}</h3>
               </div>
-              <h3 className="text-xl font-bold mb-2">{hobby.title}</h3>
-              <p className="text-sm text-muted-foreground">{hobby.description}</p>
+              <p className="text-sm text-muted-foreground mt-2 lg:mt-0">{hobby.description}</p>
             </div>
           ))}
         </div>

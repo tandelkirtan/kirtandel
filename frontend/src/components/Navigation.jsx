@@ -39,7 +39,7 @@ const Navigation = () => {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-10">
             {/* Logo */}
             <Link
               to="/"
@@ -128,7 +128,7 @@ const Navigation = () => {
       <nav
         className="fixed bottom-0 left-0 right-0 z-50 md:hidden backdrop-blur-sm bg-background/30"
       >
-        <div className="flex items-center justify-around h-16 px-2">
+        <div className="flex items-center justify-around h-14 px-2">
           {navLinks.map((link, index) => {
             const Icon = link.icon;
             const isActive = location.pathname === link.path;

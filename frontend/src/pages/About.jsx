@@ -244,15 +244,17 @@ const About = () => {
           <h2 className="text-3xl font-bold text-center mb-12">
             Core <span className="gradient-text">Values</span>
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => (
               <div
                 key={index}
                 className="glass-effect rounded-2xl p-6 card-hover"
               >
-                <div className="text-primary mb-4">{value.icon}</div>
-                <h3 className="text-xl font-bold mb-2">{value.title}</h3>
-                <p className="text-muted-foreground text-sm">{value.description}</p>
+                <div className="flex items-center lg:block">
+                  <div className="text-primary mr-4 lg:mr-0 lg:mb-4">{value.icon}</div>
+                  <h3 className="text-xl font-bold lg:mb-2">{value.title}</h3>
+                </div>
+                <p className="text-muted-foreground text-sm mt-2 lg:mt-0">{value.description}</p>
               </div>
             ))}
           </div>

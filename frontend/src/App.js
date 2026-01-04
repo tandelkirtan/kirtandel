@@ -7,6 +7,7 @@ import Navigation from '@/components/Navigation';
 import Home from '@/pages/Home';
 import About from '@/pages/About';
 import Projects from '@/pages/Projects';
+import FunProjects from '@/pages/FunProjects';
 import Contact from '@/pages/Contact';
 import Hobbies from '@/pages/Hobbies';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -63,6 +64,7 @@ function AnimatedRoutes() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/fun-projects" element={<FunProjects />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/hobbies" element={<Hobbies />} />
         </Routes>
