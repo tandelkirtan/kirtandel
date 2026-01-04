@@ -27,23 +27,20 @@ const FunProjects = () => {
       title: 'Jira Clone',
       description: 'A project management tool inspired by Jira.',
       image: jiraImg,
-      technologies: ['React', 'Redux', 'Drag & Drop'],
       github: 'https://github.com/tandelkirtan',
       demo: 'https://k-jira-dashbord.vercel.app/'
     },
     {
       title: 'K-Delivery',
-      description: 'A delivery application dashboard and tracking system.',
+      description: 'A food delivery application.',
       image: kDeliveryImg,
-      technologies: ['React', 'Maps API', 'Node.js'],
       github: 'https://github.com/tandelkirtan',
       demo: 'https://k-delivery.vercel.app/'
     },
     {
       title: 'Tic Tac Toe',
-      description: 'The classic game of X and O built with React.',
+      description: 'The classic game of X and O with a modern twist.',
       image: ticTacToeImg,
-      technologies: ['React', 'Game Logic'],
       github: 'https://github.com/tandelkirtan',
       demo: 'https://k-tic-tac-toe.vercel.app/'
     },
@@ -51,7 +48,6 @@ const FunProjects = () => {
       title: 'Stone Paper Scissors',
       description: 'A fun interactive game to play against the computer.',
       image: stonePaperScissorsImg,
-      technologies: ['JavaScript', 'DOM Manipulation'],
       github: 'https://github.com/tandelkirtan',
       demo: 'https://k-stone-paper-scissor.vercel.app/'
     },
@@ -59,15 +55,13 @@ const FunProjects = () => {
       title: 'Password Generator',
       description: 'Generate secure and random passwords instantly.',
       image: passwordImg,
-      technologies: ['React', 'Algorithms'],
       github: 'https://github.com/tandelkirtan',
       demo: 'https://k-password-generator.vercel.app/'
     },
     {
       title: 'Timezone Converter',
-      description: 'Convert and compare times across different zones.',
+      description: 'Live Location and Search for timezones across different zones.',
       image: timezoneImg,
-      technologies: ['JavaScript', 'Date API'],
       github: 'https://github.com/tandelkirtan',
       demo: 'https://k-time-zone.vercel.app/'
     },
@@ -75,7 +69,6 @@ const FunProjects = () => {
       title: 'Employee Management',
       description: 'A system to manage employee records and data.',
       image: employeeImg,
-      technologies: ['React', 'CRUD', 'Local Storage'],
       github: 'https://github.com/tandelkirtan',
       demo: 'https://k-employee-management.vercel.app/'
     },
@@ -83,7 +76,6 @@ const FunProjects = () => {
       title: 'Number Guessing',
       description: 'Test your intuition with this number guessing game.',
       image: numberGuessingImg,
-      technologies: ['JavaScript', 'Logic'],
       github: 'https://github.com/tandelkirtan',
       demo: 'https://k-number-guessing-game.vercel.app/'
     },
@@ -91,7 +83,6 @@ const FunProjects = () => {
       title: 'Background Changer',
       description: 'A simple utility to change background colors dynamically.',
       image: bgChangerImg,
-      technologies: ['JavaScript', 'DOM'],
       github: 'https://github.com/tandelkirtan',
       demo: 'https://k-bg-changer.vercel.app/'
     },
@@ -99,7 +90,6 @@ const FunProjects = () => {
       title: 'Blinkit Clone',
       description: 'A clone of the Blinkit delivery app interface.',
       image: blinkitImg,
-      technologies: ['React', 'Tailwind CSS'],
       github: 'https://github.com/tandelkirtan',
       demo: 'https://blinkit-topaz.vercel.app/'
     }
@@ -152,18 +142,6 @@ const FunProjects = () => {
                 <div>
                   <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
 
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.map((tech, i) => (
-                      <span
-                        key={i}
-                        className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
                   {/* Links */}
                   <div className="flex gap-3">
                     <a href={project.github} target="_blank" rel="noopener noreferrer">
@@ -204,17 +182,6 @@ const FunProjects = () => {
                   </div>
                   
                   <p className="text-sm text-muted-foreground mb-4">{selectedProject.description}</p>
-
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {selectedProject.technologies.map((tech, i) => (
-                      <span
-                        key={i}
-                        className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
 
                   <div className="flex gap-3">
                     <a href={selectedProject.github} target="_blank" rel="noopener noreferrer">
